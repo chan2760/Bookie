@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookie</title>
+    <style>
+    *{
+        margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+    }
+
+    body 
+    {
+      font-family:'Times New Roman', Times, serif;
+      background-color: white;
+    }
+    
+    .container
+    {
+        width: 100%;
+    }
+
+    nav 
+    {
+      height: 60px;
+      width: 100%;
+      position: fixed;
+     background-color: rgb(240, 239, 230);
+      display: flex;
+      align-items: center; 
+      justify-content: space-between;
+      padding: 0 30px;
+      opacity: 0.9;
+      border: 1px solid rgba(218, 207, 207, 0.67);
+    }
+
+    nav h1 
+    {
+      font-size: 24px;
+      color: #222;
+      letter-spacing: 1px;
+    }
+
+    .search-bar 
+    {
+      display: flex;
+      align-items: center;
+      gap: 10px; 
+    }
+
+    .search-bar input
+    {
+        height: 35px;
+        width: 200px;
+        padding: 0 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+        transition: all 0.2s ease;
+    }
+
+    .search-bar input:focus
+    {
+        border-color: #FFA500;
+        box-shadow: 0 0 3px #FFA500;
+    }
+
+   .search-button 
+   {
+        height: 35px;
+        width: 40px;
+        background:  #FFA500;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .search-button:focus
+    {
+       box-shadow: 0 0 3px #6f6553;
+    }
+
+    .search-button:hover{
+        background: #ffb733;
+    }
+    
+    .shoppingcart-button
+    {
+        height: 38px;
+        width: 40px;
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: box-shadow 0.2s ease;
+    }
+    
+    .shoppingcart-button:hover 
+    {
+        border-color: #FFA500;
+        box-shadow: 0 0 3px #FFA500;
+    }
+
+    .shoppingcart-button img
+    {
+        height: 20px;
+    }
+   
+    .menu-bar
+    {
+        position: fixed;
+        top: 60px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: rgb(240, 239, 230);
+        border-top: 1px solid #ccc;
+        border-bottom:  1px solid #ccc;
+        padding: 10px 0px;
+        opacity: 0.9;
+    }
+
+    .menu-item
+    {
+        display: flex;
+        gap : 8px;
+        align-items: center;
+        padding : 6px 12px;
+        border-radius: 6px;
+    }
+
+    .menu-item:hover{
+        background-color: #FFA500;
+        color: white;
+        transition: 0.2s;
+    }
+    
+    .menu img{
+        width: 20px;
+        height: 20px;
+    }
+
+    .slide-background
+    {
+        height: 500px;
+      
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding-top: 350px;
+        padding-right: 80px;
+        padding-left : 80px;
+        padding-bottom: 220px;
+        
+    }
+   
+    .slide-item
+    {
+        display: flex;
+        gap: 50px;
+        min-height: 350px;
+       min-width: 450px;
+        align-items: center;
+        justify-content: center;
+       background-color: rgb(240, 239, 230);
+        padding: 0 10px 0 10px;   
+        text-align: center;
+        
+     
+    }
+
+    .slide-item h1 
+    {
+       font-size: 2rem;
+         color: #333;
+    }
+
+    .slide-item img 
+    {
+        width: 200px;
+        height: 300px;
+       
+    }
+
+    .slide-item button{
+        color: orange;
+        border: 1px solid orange;
+        height: 30px;
+       
+    }
+    .slide-item button:hover{
+        background: rgb(239, 220, 193);
+    }
+    
+    .flex-col
+    {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        
+    }
+
+    .slide-item_3
+    {
+      
+        gap: 50px;
+        min-height: 350px;
+        min-width: 450px;
+        align-items: center;
+        justify-content: center;
+       background-color: rgb(240, 239, 230);
+        padding: 20px 30px 70px 30px;
+        text-align: center;
+    }
+
+    .slide-item_3 img 
+    {
+        width: 350px;
+        height: 200px;
+     
+    }  
+
+    .flex-col_3
+    {
+        line-height: 28px;
+        margin: center;
+    }
+    
+    .recommendation
+    {
+        width: 100%;
+        height: 100%;
+        padding: 30px 30px 30px 30px;
+        text-align: center;
+        font-family:'Times New Roman', Times, serif;
+        font-size: 30px;
+        font-weight: bold;
+        background-color: rgb(240, 239, 230);
+    }
+
+    .recommendation-books
+    {
+        gap: 50px;
+        height: 230px;
+        display: flex;
+        align-items: n;
+        justify-content: space-around;
+        background-color: rgb(141, 151, 151);
+        padding:20px 40px 20px 40px;
+        align-items: center;
+       background-color: rgb(240, 239, 230); 
+        
+    }
+@media screen and (min-width: 480px) and (max-width: 768px) {
+
+  .slide-background{
+    flex-direction: column;
+    gap: 20px;
+    height: auto;
+    
+  }
+  .recommendation-books{
+    flex-direction: column;
+    height: auto;
+  }
+}
+
+</style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <h1>Bookie</h1>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Search"/>
+                <button class="search-button">
+                    <img src="Search.png" alt="search icon" style="width: 18px;
+                        height: 18px;"> 
+                </button>
+            </div>
+
+            <button class="shoppingcart-button">
+                <img src="Cart.svg" alt="shopping cart icon" >
+            </button>
+        </nav>
+
+        <div class="menu-bar"> 
+            <div class="menu-item">
+                <img src="home.png" alt="home icon" style="width: 18px; height: 18px; margin-left: 10px;">
+                <p>Home</p>
+            </div>
+
+            <div class="menu-item">
+                <img src="new.png" alt="home icon" style="width: 35px; height: 35px;">
+                <p>New releases</p>
+            </div>
+
+            <div class="menu-item">
+                <img src="recommendations.png" alt="home icon" style="width: 20px; height: 20px;">
+                <p>Recommendations</p>
+            </div>
+
+            <div class="menu-item">
+                <img src="books.gif" alt="home icon" style="width: 25px; height: 25px;">
+                <p>Books</p>
+            </div>
+
+            <div class="menu-item">
+                <img src="audiobook.gif" alt="home icon" style="width: 30px; height: 30px;">
+                <p>Audiobooks</p>
+            </div>
+
+            <div class="menu-item">
+                <img src="ebook.png" alt="home icon" style="width: 25px; height: 25px;">
+                <p>Ebooks</p>
+            </div>
+        </div>
+
+        <div class="slide-background" style="background-color: #000000;">
+            <div class="slide-item">
+                <div class="flex-col">
+                    <h1 class="simple-line"  > Manga <br/>Series</h1>
+                    <p class="type">Japan Anime</p>
+                    <button>Learn more</button>
+                </div> 
+                <img class="slides" src="manga.webp" alt="Manga Icon" >
+            </div>
+            
+            <div class="slide-item">
+                <div class="flex-col">
+                    <h1 class="simple-line" > Comics <br/>Series</h1>
+                    <p class="Ct" style="padding-right: 40px;">Cartoon</p>
+                    <button>Learn more</button>
+                </div>
+                <img class="slides" src="comics.webp" alt="Manga Icon" >
+            </div> 
+            
+            <div class="slide-item_3">
+                <img src="Movie book.jpg" alt="Manga Icon" >
+                <div class="flex-col_3">
+                    <h1>Adapted Books </h1>
+                    <p>25% summer discount</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="recommendation">
+            <h1">Our Recommendations</h1>
+        </div>
+        
+        <div class="recommendation-books">
+            <img src="SupermanComics.jpeg" alt="RecommendationsBook" style="height: 200px; width: 150px;">
+            <img src="marvelzombiesComics.jpeg" alt="RecommendationsBook" style="height: 200px; width: 150px;">
+            <img src="invincibleComics.jpeg" alt="RecommendationsBook" style="height:200px; width: 150px;">
+            <img src="BatmanComics.jpeg" alt="RecommendationsBook" style="height:200px; width: 150px;">
+            <img src="OnepieceManga.jpeg" alt="RecommendationsBook" style="height:200px; width: 150px;">
+            <img src="HarrryPotter.jpeg" alt="RecommendationsBook" style="height:200px; width: 150px;">
+        </div>
+
+    </div>
+</body>
+</html>
